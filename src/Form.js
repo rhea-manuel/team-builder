@@ -8,26 +8,33 @@ export default function Form(props) {
     // const setFormData = props.setFormData
 
     const [formData, setFormData] = useState({
-      name: '',
-      email: '',
-      role: 'none'
+        name: '',
+        email: '',
+        role: 'none'
     })
 
-    // console.log(team)
-    // const [formData, setFormData] = useState({
-    //     name: '',
-    //     email: '',
-    //     role: ''
-    // })
-
     const update = (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-        })
 
         
-        // updateTeam()
+            setFormData({
+                ...formData,
+                [event.target.name]: event.target.value,
+            })
+        
+    }
+
+    const nameUpdate = (event) => {
+
+        if (/^[A-Za-z]+$/.test(event.target.value)) {
+            update(event)
+        }
+
+    }
+
+    const emailUpdate = (event) => {
+        if (/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(event.target.value)){
+            update(event)
+        }
     }
 
     const submit = (event) => {
@@ -35,8 +42,8 @@ export default function Form(props) {
 
         const newTeam = [...team]
         newTeam.push(formData)
-        
-        
+
+
         updateTeam(newTeam)
     }
 
@@ -45,12 +52,12 @@ export default function Form(props) {
         <form onSubmit={submit}>
             <label>
                 Name:
-                <input type="text" name="name" onChange={update} />
+                <input value={formData.name} type="text" name="name" onChange={nameUpdate} />
             </label>
 
             <label>
                 E-Mail:
-                    <input type="text" name="email" onChange={update} />
+                    <input value={formData.email} type="text" name="email" onChange={update} />
             </label>
 
             <label>
