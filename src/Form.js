@@ -15,12 +15,12 @@ export default function Form(props) {
 
     const update = (event) => {
 
-        
-            setFormData({
-                ...formData,
-                [event.target.name]: event.target.value,
-            })
-        
+
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value,
+        })
+
     }
 
     const nameUpdate = (event) => {
@@ -32,7 +32,7 @@ export default function Form(props) {
     }
 
     const emailUpdate = (event) => {
-        if (/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(event.target.value)){
+        if (/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(event.target.value)) {
             update(event)
         }
     }
@@ -51,27 +51,28 @@ export default function Form(props) {
 
         <form onSubmit={submit}>
             <label>
-                Name:
+                Name
                 <input value={formData.name} type="text" name="name" onChange={nameUpdate} />
             </label>
-
+            <br />
             <label>
-                E-Mail:
+            Email
                     <input value={formData.email} type="text" name="email" onChange={update} />
             </label>
-
+            <br />
             <label>
+            Role
                 <select name="role" onChange={update}>
-
-                    Role:
+                    
                     <option>none</option>
                     <option>backend engineer</option>
                     <option>frontend engineer</option>
                     <option>designer</option>
                 </select>
             </label>
+            <br />
 
-            <button>submit</button>
+            <button>Submit</button>
 
             {/* <p>name is {formData.name}, role is {formData.role}, </p> */}
         </form>

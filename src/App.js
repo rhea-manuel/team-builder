@@ -12,12 +12,21 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Join our team!</h1>
       <Form team={team} updateTeam={updateTeam}></Form>
+      <h2>Our Awesome Team</h2>
       {
         team.map(item => {
           return (<div>{item.name}, {item.email}, {item.role}</div>)
         })
       }
+
+      <footer>
+        <small>
+          Copyright © Rhea Manuel</small>
+      </footer>
+
+     
     </div>
   );
 }
